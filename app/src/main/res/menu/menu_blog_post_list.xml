@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.BlogPostListActivity" >
+
+    <item android:id="@+id/action_right"
+        android:icon="@mipmap/ic_chevron_right_white_48dp"
+        android:title="@string/action_next_page"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:menuCategory="secondary"/>
+
+    <item android:id="@+id/action_left"
+        android:icon="@mipmap/ic_chevron_left_white_48dp"
+        android:title="@string/action_previous_page"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:menuCategory="secondary"/>
+
+    <item android:id="@+id/action_home_page"
+        android:icon="@mipmap/ic_home_white_48dp"
+        android:title="@string/action_home_page"
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:menuCategory="secondary"
+        />
+
+
+</menu>
