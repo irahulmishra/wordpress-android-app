@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:583492659978:android:158ecfbeb5a6003a",
+        "mobilesdk_app_id": "1:583492659978:android:5cdeb2de43c618e21f28f3",
         "android_client_info": {
-          "package_name": "com.labnol.app"
+          "package_name": "com.blog.app"
         }
       },
       "oauth_client": [
@@ -25,15 +25,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583492659978-kcripf344stsgukohal6nppq341qpgln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

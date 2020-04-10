@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BlogApp.iml" filepath="$PROJECT_DIR$/BlogApp.iml" group="BlogApp" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BlogApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="wordpress-android-app/app" />
       <module fileurl="file://$PROJECT_DIR$/wordpress-android-app.iml" filepath="$PROJECT_DIR$/wordpress-android-app.iml" group="wordpress-android-app" />
-      <module fileurl="file://$PROJECT_DIR$/app/wordpress-android-app-app.iml" filepath="$PROJECT_DIR$/app/wordpress-android-app-app.iml" group="wordpress-android-app/app" />
     </modules>
   </component>
 </project>

@@ -2,10 +2,6 @@ package com.blog.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,18 +9,23 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.blog.app.config.ConfigPostListActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.blog.app.R;
 import com.blog.app.adapter.DividerItemDecoration;
 import com.blog.app.adapter.PostsAdapter;
 import com.blog.app.adapter.RecyclerTouchListener;
+import com.blog.app.config.ConfigPostListActivity;
 import com.blog.app.model.CategoryResponse;
 import com.blog.app.model.MediaResponse;
 import com.blog.app.model.PostResponse;
 import com.blog.app.rest.ApiClient;
 import com.blog.app.rest.ApiInterface;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.jsoup.Jsoup;
 
@@ -35,12 +36,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.DefaultItemAnimator;
+//import android.support.v7.widget.LinearLayoutManager;
+//import android.support.v7.widget.RecyclerView;
+
 public class BlogPostListActivity extends AppCompatActivity {
 
     private static final String TAG = BlogPostListActivity.class.getSimpleName();
     private  PostsAdapter postsAdapter;
     private  List<PostResponse> postList = new ArrayList<>();
-    private  RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private  ApiInterface apiService ;
     private   Call<List<PostResponse>> callPostsListOriginal ;
     private ProgressBar mProgressBar  ;
@@ -59,9 +65,9 @@ public class BlogPostListActivity extends AppCompatActivity {
 
         //Log.e(TAG,"OnCreate Bundle of Activity");
         apiService = ApiClient.getClient().create(ApiInterface.class);
-        mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        mProgressBar = findViewById(R.id.progress_bar);
 
-        mAdView = (AdView) findViewById(R.id.adViewBlogListHome);
+        mAdView = findViewById(R.id.adViewBlogListHome);
         adRequest = new AdRequest.Builder()
                 .build();
 
@@ -71,7 +77,7 @@ public class BlogPostListActivity extends AppCompatActivity {
         }
 
         intentBundle = new Intent(this,BlogPostActivity.class);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         postsAdapter = new PostsAdapter(postList,R.layout.post_list_row,this);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

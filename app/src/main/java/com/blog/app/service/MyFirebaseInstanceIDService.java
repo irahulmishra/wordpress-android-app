@@ -3,27 +3,44 @@ package com.blog.app.service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.blog.app.config.NotificationConfig;
 import com.blog.app.model.NotificationRegRequest;
 import com.blog.app.model.NotificationRegResponse;
 import com.blog.app.rest.ApiClient;
 import com.blog.app.rest.ApiInterface;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
+public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
     private static final String TAG = MyFirebaseInstanceIDService.class.getSimpleName();
 
     private ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
     @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+        Log.d("NEW_TOKEN", s);
+
+        // Saving reg id to shared preferences
+        storeRegIdInPref(s);
+
+        // sending reg id to your server
+        sendRegistrationToServer(s);
+
+        // Notify UI that registration has completed, so the progress indicator can be hidden.
+        Intent registrationComplete = new Intent(NotificationConfig.REGISTRATION_COMPLETE);
+        registrationComplete.putExtra("token", s);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
+    }
+
+    /*@Override
     public void onTokenRefresh() {
         super.onTokenRefresh();
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
@@ -38,7 +55,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         Intent registrationComplete = new Intent(NotificationConfig.REGISTRATION_COMPLETE);
         registrationComplete.putExtra("token", refreshedToken);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
-    }
+    }*/
 
     private void sendRegistrationToServer(final String token) {
         // sending gcm token to server

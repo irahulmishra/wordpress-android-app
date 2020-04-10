@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme">
 
         <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1689831716776719~5074819126" />
         <activity
             android:name="com.blog.app.activity.BlogPostListActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

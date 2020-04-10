@@ -2,11 +2,12 @@ package com.blog.app.adapter;
 
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.blog.app.R;
 import com.blog.app.model.PostResponse;
@@ -27,9 +28,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
 
         public MyViewHolder(View view) {
             super(view);
-            posttitle = (TextView) view.findViewById(R.id.posttitle);
-            postdate = (TextView) view.findViewById(R.id.postdate);
-            postcontent = (TextView) view.findViewById(R.id.postcontent);
+            posttitle = view.findViewById(R.id.posttitle);
+            postdate = view.findViewById(R.id.postdate);
+            postcontent = view.findViewById(R.id.postcontent);
 
 
         }
