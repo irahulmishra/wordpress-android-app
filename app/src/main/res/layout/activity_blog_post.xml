@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="0dp"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.BlogPostActivity">
 
 
@@ -14,28 +13,21 @@
         android:id="@+id/blogpostcontent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="0dp"
         />
 
     <LinearLayout android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center">
+
         <ProgressBar
             android:id="@+id/progress_bar_post"
+            style="?android:progressBarStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?android:progressBarStyle"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewBlogPostHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_home">
-    </com.google.android.gms.ads.AdView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingShareButton"

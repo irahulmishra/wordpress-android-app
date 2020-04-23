@@ -12,13 +12,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blog.app.R;
+import com.blog.app.config.ConfigPostActivity;
 import com.blog.app.config.NotificationConfig;
 import com.blog.app.model.PostResponse;
 import com.blog.app.rest.ApiClient;
 import com.blog.app.rest.ApiInterface;
 import com.blog.app.utils.NotificationUtils;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import retrofit2.Call;
@@ -36,8 +35,6 @@ public class BlogPostActivity extends AppCompatActivity {
     private Call<PostResponse> callPostById ;
     private int post_id = 0 ;
     private String strLinkToShare ;
-    private AdView mAdView;
-    private AdRequest adRequest;
 
 
     Callback<PostResponse> callPostByIdCallback = new Callback<PostResponse>() {
@@ -45,16 +42,16 @@ public class BlogPostActivity extends AppCompatActivity {
         public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
 
 //            Log.e("Title Name :", response.body().getTitle().getRendered());
-//            Log.e("Post Content :", response.body().getContent().getRendered());
+            //          Log.d("Post Content :", response.body().getContent().getRendered());
 //            Log.e("Post Featured media :", response.body().getFeatured_media() + "");
 //            Log.e("Post Link",response.body().getLink());
             strLinkToShare = response.body().getLink();
 
-            postcontent.loadUrl(strLinkToShare);
+            //postcontent.loadUrl(strLinkToShare);
 
-            //postcontent.loadData(ConfigPostActivity.strHtmlStart+response.body().getTitle().getRendered()+ ConfigPostActivity.strAfterHeadTag+response.body().getContent().getRendered()+ ConfigPostActivity.getStrHtmlEndTag, "text/html; charset=UTF-8", "UTF-8");
+            postcontent.loadData(ConfigPostActivity.strHtmlStart + response.body().getTitle().getRendered() + ConfigPostActivity.strAfterHeadTag + response.body().getContent().getRendered() + ConfigPostActivity.getStrHtmlEndTag, "text/html; charset=UTF-8", "UTF-8");
 
-            mAdView.loadAd(adRequest);
+            // mAdView.loadAd(adRequest);
             mProgressBar.setVisibility(View.GONE);
         }
 
@@ -120,9 +117,9 @@ public class BlogPostActivity extends AppCompatActivity {
         postcontent = findViewById(R.id.blogpostcontent);
         floatingShareButton = findViewById(R.id.floatingShareButton);
 
-        mAdView = findViewById(R.id.adViewBlogPostHome);
-        adRequest = new AdRequest.Builder()
-                .build();
+        //mAdView = findViewById(R.id.adViewBlogPostHome);
+        //adRequest = new AdRequest.Builder()
+        //        .build();
 
         //postcontent.requestFocus();
         postcontent.getSettings().setJavaScriptEnabled(true);
