@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.blog.app"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -27,7 +27,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.firebase:firebase-messaging:20.1.5'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'com.google.android.gms:play-services-ads:19.0.1'
 
 
     // retrofit, gson ,jsoup
