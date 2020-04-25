@@ -87,6 +87,7 @@ public class BlogPostListActivity extends AppCompatActivity {
         }));
         getPostListPageWise(CATEGORY_ID,CUURENT_PAGE_NUMBER);
 
+
     }
     private void getPostListPageWise(int category_id,int page_number) {
         //Log.e(TAG,"get post list of page number :"+page_number);

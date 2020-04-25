@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blog.app.R;
+import com.blog.app.config.ConfigPostActivity;
 import com.blog.app.config.NotificationConfig;
 import com.blog.app.model.PostResponse;
 import com.blog.app.rest.ApiClient;
@@ -24,7 +25,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//import android.support.design.widget.FloatingActionButton;
 
 public class BlogPostActivity extends AppCompatActivity {
     private static final String TAG = BlogPostActivity.class.getSimpleName();
@@ -41,9 +41,8 @@ public class BlogPostActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
             strLinkToShare = response.body().getLink();
-            //postcontent.loadData(response.body().getContent().getRendered(),"text/html; charset=UTF-8","UTF-8");
-            //postcontent.loadData(ConfigPostActivity.strHtmlStart + response.body().getTitle().getRendered() + ConfigPostActivity.strAfterHeadTag + response.body().getContent().getRendered() + ConfigPostActivity.getStrHtmlEndTag, "text/html; charset=UTF-8", "UTF-8");
-            postcontent.loadUrl(strLinkToShare);
+            postcontent.loadData(ConfigPostActivity.strHtmlStart + response.body().getTitle().getRendered() + ConfigPostActivity.strAfterHeadTag + response.body().getContent().getRendered() + ConfigPostActivity.getStrHtmlEndTag, "text/html; charset=UTF-8", "UTF-8");
+            //postcontent.loadUrl(strLinkToShare);
             mProgressBar.setVisibility(View.GONE);
         }
 
@@ -54,12 +53,6 @@ public class BlogPostActivity extends AppCompatActivity {
         }
     };
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_blog_post, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -86,14 +79,11 @@ public class BlogPostActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //Log.e(TAG,"Activity On Resume");
-        // clear the notification area when the app is opened
         NotificationUtils.clearNotifications(getApplicationContext());
     }
 
     @Override
     protected void onPause() {
-        //Log.e(TAG,"Activity onn Pause");
         super.onPause();
     }
 
@@ -117,6 +107,8 @@ public class BlogPostActivity extends AppCompatActivity {
         postcontent.setWebViewClient(new WebViewClient());
         postcontent.getSettings().setJavaScriptEnabled(true);
         postcontent.setSoundEffectsEnabled(true);
+
+        displayFirebaseRegId();
 
 
         if (post_id > 0) {
