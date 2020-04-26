@@ -41,8 +41,8 @@ public class BlogPostActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
             strLinkToShare = response.body().getLink();
-            postcontent.loadData(ConfigPostActivity.strHtmlStart + response.body().getTitle().getRendered() + ConfigPostActivity.strAfterHeadTag + response.body().getContent().getRendered() + ConfigPostActivity.getStrHtmlEndTag, "text/html; charset=UTF-8", "UTF-8");
-            //postcontent.loadUrl(strLinkToShare);
+            String htmlData = ConfigPostActivity.strHtmlStart + response.body().getTitle().getRendered() + ConfigPostActivity.strAfterHeadTag + response.body().getContent().getRendered() + ConfigPostActivity.getStrHtmlEndTag;
+            postcontent.loadDataWithBaseURL("", htmlData, "text/html", "UTF-8", null);
             mProgressBar.setVisibility(View.GONE);
         }
 
