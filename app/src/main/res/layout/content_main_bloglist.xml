@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_blog_post_list"
     tools:context=".activity.BlogPostListActivity">
@@ -16,21 +15,13 @@
         android:layout_width="wrap_content"
         android:layout_height="31dp"
         android:layout_gravity="center" />
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewBlogListHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_home">
-    </com.google.android.gms.ads.AdView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="0dp"
         android:scrollbars="vertical" />
 
 

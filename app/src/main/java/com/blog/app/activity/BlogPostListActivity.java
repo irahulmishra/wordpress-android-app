@@ -24,8 +24,6 @@ import com.blog.app.model.MediaResponse;
 import com.blog.app.model.PostResponse;
 import com.blog.app.rest.ApiClient;
 import com.blog.app.rest.ApiInterface;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.jsoup.Jsoup;
 
@@ -36,10 +34,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.DefaultItemAnimator;
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
 
 public class BlogPostListActivity extends AppCompatActivity {
 
@@ -50,8 +44,6 @@ public class BlogPostListActivity extends AppCompatActivity {
     private  ApiInterface apiService ;
     private   Call<List<PostResponse>> callPostsListOriginal ;
     private ProgressBar mProgressBar  ;
-    private AdView mAdView;
-    private AdRequest adRequest;
     private Intent intentBundle ;
     private boolean boolShowNext = false ;
     private  int CUURENT_PAGE_NUMBER = 1;
@@ -63,13 +55,9 @@ public class BlogPostListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_post_list);
 
-        //Log.e(TAG,"OnCreate Bundle of Activity");
         apiService = ApiClient.getClient().create(ApiInterface.class);
         mProgressBar = findViewById(R.id.progress_bar);
 
-        mAdView = findViewById(R.id.adViewBlogListHome);
-        adRequest = new AdRequest.Builder()
-                .build();
 
 
         if(ConfigPostListActivity.categoryResponseList.isEmpty()){
@@ -99,6 +87,7 @@ public class BlogPostListActivity extends AppCompatActivity {
         }));
         getPostListPageWise(CATEGORY_ID,CUURENT_PAGE_NUMBER);
 
+
     }
     private void getPostListPageWise(int category_id,int page_number) {
         //Log.e(TAG,"get post list of page number :"+page_number);
@@ -115,7 +104,7 @@ public class BlogPostListActivity extends AppCompatActivity {
                     postsAdapter.notifyDataSetChanged();
                     recyclerView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.GONE);
-                    mAdView.loadAd(adRequest);
+                    //mAdView.loadAd(adRequest);
                     if(CUURENT_PAGE_NUMBER < TOTAL_PAGES_NUMBER){
                         boolShowNext = true ;
                         invalidateOptionsMenu();
@@ -348,25 +337,19 @@ public class BlogPostListActivity extends AppCompatActivity {
 
     @Override
     public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
+
         super.onPause();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
+
     }
 
     @Override
     public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
+
         super.onDestroy();
     }
 
